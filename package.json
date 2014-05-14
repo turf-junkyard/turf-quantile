@@ -24,5 +24,8 @@
   "homepage": "https://github.com/morganherlocker/turf-quantile",
   "devDependencies": {
     "tape": "^2.12.3"
+  },
+  "dependencies": {
+    "simple-statistics": "^0.8.0"
   }
 }
