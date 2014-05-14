@@ -1,19 +1,15 @@
-var ss = require('simple-statistics'),
-    _ = require('lodash')
+var ss = require('simple-statistics')
 
-module.exports = function(fc, field, percentiles, done){
+module.exports = function(fc, field, percentiles){
   var vals = []
   var quantiles = []
 
-  done = done || function () {};
-
-  _.each(fc.features, function(feature){
+  fc.features.forEach(function(feature){
     vals.push(feature.properties[field])
   })
-  _.each(percentiles, function(percentile){
+  percentiles.forEach(function(percentile){
     quantiles.push(ss.quantile(vals, percentile * .01))
   })
   
-  done(null, quantiles)
-  return quantiles;
+  return quantiles
 }

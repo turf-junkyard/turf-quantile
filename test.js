@@ -1,24 +1,14 @@
-var t = require('../index'), 
-    should = require('should')
-  
-describe('quantile', function(){
-  it('should take a set of points and an array of percentiles and return a list of quantile breaks', function(done){
-    t.load(__dirname+'/testIn/Points3.geojson', function(err, pts){
-      if(err) throw err
-      pts.should.be.ok
-      var syncQuantiles = t.quantile(pts, 'elevation', [10,30,40,60,80,90,99], function(err, quantiles){
-        if(err) throw err
-        quantiles.should.be.ok
-        quantiles.length.should.equal(7)
-      })
+var test = require('tape')
+var quantile = require('./')
+var fc = require('./geojson/fc.js')
 
-      if (typeof syncQuantiles === 'Error') {
-        throw syncQuantiles;
-      }
+test('quantile', function(t){
+  var points = JSON.parse(fs.readFileSync(__dirname+'/testIn/Points3.geojson'))
 
-      syncQuantiles.should.be.ok;
-      syncQuantiles.length.should.equal(7);
-      done();
-    })
-  })
+  var quantiled = quantile(points, 'elevation', [10,30,40,60,80,90,99])
+
+  t.ok(quantiled)
+  t.equal(quantiled.length, 7)
+
+  t.end()
 })
