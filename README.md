@@ -13,7 +13,7 @@ var percentiles = [10,30,40,60,80,90,99]
 
 var pts = JSON.parse(fs.readFileSync('/path/to/pts.geojson'))
 
-var quantiles = quantile(pts, propertyName, percentiles, function(err, quantiles){
+var quantiles = quantile(pts, propertyName, percentiles)
     
 console.log(quantiles) // [ 12, 25, 29, 52, 76, 99, 143 ]
 ```
