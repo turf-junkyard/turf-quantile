@@ -3,10 +3,10 @@ var ss = require('simple-statistics');
 /**
 * Takes a {@link FeatureCollection}, a property name, and a set of percentiles and returns a quantile array.
 * @module turf/quantile
-* @param {FeatureCollection} input
-* @param {string} field
-* @param {number} numberOfBreaks
-* @return {Array<number>} the number of breaks
+* @param {FeatureCollection} input a FeatureCollection of any type
+* @param {String} field the property on which to retrieve quantile values
+* @param {Array<number>} percentiles an Array of percentiles on which to calculate quantile values
+* @return {Array<number>} an array of the break values
 * @example
 * var points = turf.featurecollection([
 *   turf.point(5,5, {population: 200}),
