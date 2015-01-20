@@ -9,12 +9,16 @@ var ss = require('simple-statistics');
 * @return {Array<number>} an array of the break values
 * @example
 * var points = turf.featurecollection([
-*   turf.point(5,5, {population: 200}),
-*   turf.point(1,3, {population: 600}),
-*   turf.point(14,2, {population: 100}),
-*   turf.point(13,1, {population: 200}),
-*   turf.point(19,7, {population: 300})]);
-* var breaks = turf.quantile(points, 'population', 2);
+*   turf.point(5,5, {population: 5}),
+*   turf.point(1,3, {population: 40}),
+*   turf.point(14,2, {population: 80}),
+*   turf.point(13,1, {population: 90}),
+*   turf.point(19,7, {population: 100})
+* ]);
+*
+* var breaks = turf.quantile(
+*   points, 'population', [25, 50, 75, 99]);
+*
 * //=breaks
 */
 module.exports = function(fc, field, percentiles){
