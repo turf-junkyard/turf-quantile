@@ -1,7 +1,7 @@
 var ss = require('simple-statistics');
 
 /**
-* Given a FeatureCollection, return the quantiles of a given property
+* Takes a {@link FeatureCollection}, a property name, and a set of percentiles and returns a quantile array.
 * @module turf/quantile
 * @param {FeatureCollection} input
 * @param {string} field
