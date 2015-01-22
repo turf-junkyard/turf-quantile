@@ -1,41 +1,51 @@
-turf-quantile
-=============
+# turf-quantile
+
 [![build status](https://secure.travis-ci.org/Turfjs/turf-quantile.png)](http://travis-ci.org/Turfjs/turf-quantile)
 
-Takes a set of features, a property name, and a set of percentiles and outputs a quantile array. This can be passed as a break array to the isolines function or the isobands function.
+turf quantile module
 
-###Install
+
+### `turf.quantile(input, field, percentiles)`
+
+Takes a FeatureCollection, a property name, and a set of percentiles and returns a quantile array.
+
+### Parameters
+
+| parameter     | type              | description                                                   |
+| ------------- | ----------------- | ------------------------------------------------------------- |
+| `input`       | FeatureCollection | a FeatureCollection of any type                               |
+| `field`       | String            | the property on which to retrieve quantile values             |
+| `percentiles` | Array.<number>    | an Array of percentiles on which to calculate quantile values |
+
+
+### Example
+
+```js
+var points = turf.featurecollection([
+  turf.point([5,5], {population: 5}),
+  turf.point([1,3], {population: 40}),
+  turf.point([14,2], {population: 80}),
+  turf.point([13,1], {population: 90}),
+  turf.point([19,7], {population: 100})
+]);
+
+var breaks = turf.quantile(
+  points, 'population', [25, 50, 75, 99]);
+
+//=breaks
+```
+
+## Installation
+
+Requires [nodejs](http://nodejs.org/).
 
 ```sh
-npm install turf-quantile
+$ npm install turf-quantile
 ```
 
-###Parameters
+## Tests
 
-|name|description|
-|---|---|
-|pts|points to classify|
-|z|z field|
-|percentiles|percentiles to classify|
-
-###Usage
-
-```js
-quantile(pts, z, percentiles)
+```sh
+$ npm test
 ```
 
-###Example
-
-```js
-var quantile = require('turf-quantile')
-var fs = require('fs')
-
-var z = 'elevation'
-var percentiles = [10,30,40,60,80,90,99]
-
-var pts = JSON.parse(fs.readFileSync('/path/to/pts.geojson'))
-
-var quantiles = quantile(pts, propertyName, percentiles)
-    
-console.log(quantiles) // [ 12, 25, 29, 52, 76, 99, 143 ]
-```
