@@ -4,11 +4,12 @@
   "description": "turf quantile module",
   "main": "index.js",
   "scripts": {
-    "test": "tape test.js"
+    "test": "tape test.js",
+    "doc": "dox -r < index.js | doxme --readme > README.md"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/morganherlocker/turf-quantile.git"
+    "url": "https://github.com/Turfjs/turf-quantile.git"
   },
   "keywords": [
     "turf",
@@ -19,14 +20,16 @@
   "author": "morganherlocker",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/morganherlocker/turf-quantile/issues"
+    "url": "https://github.com/Turfjs/turf-quantile/issues"
   },
-  "homepage": "https://github.com/morganherlocker/turf-quantile",
+  "homepage": "https://github.com/Turfjs/turf-quantile",
   "devDependencies": {
     "benchmark": "^1.0.0",
-    "tape": "^2.13.4"
+    "tape": "^2.13.4",
+    "dox": "^0.6.1",
+    "doxme": "^1.3.0"
   },
   "dependencies": {
-    "simple-statistics": "^0.8.1"
+    "simple-statistics": "^0.9.0"
   }
 }
