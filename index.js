@@ -3,6 +3,7 @@ var ss = require('simple-statistics');
 /**
 * Takes a {@link FeatureCollection}, a property name, and a set of percentiles and returns a quantile array.
 * @module turf/quantile
+* @category classification
 * @param {FeatureCollection} input a FeatureCollection of any type
 * @param {String} field the property in `input` from which to retrieve quantile values
 * @param {Array<number>} percentiles an Array of percentiles on which to calculate quantile values
