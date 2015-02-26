@@ -11,29 +11,76 @@ Takes a FeatureCollection, a property name, and a set of percentiles and returns
 
 ### Parameters
 
-| parameter     | type              | description                                                   |
-| ------------- | ----------------- | ------------------------------------------------------------- |
-| `input`       | FeatureCollection | a FeatureCollection of any type                               |
-| `field`       | String            | the property on which to retrieve quantile values             |
-| `percentiles` | Array.<number>    | an Array of percentiles on which to calculate quantile values |
+| parameter     | type              | description                                                    |
+| ------------- | ----------------- | -------------------------------------------------------------- |
+| `input`       | FeatureCollection | set of features                                                |
+| `field`       | String            | the property in `input` from which to retrieve quantile values |
+| `percentiles` | Array\.\<number\> | an Array of percentiles on which to calculate quantile values  |
 
 
 ### Example
 
 ```js
-var points = turf.featurecollection([
-  turf.point([5,5], {population: 5}),
-  turf.point([1,3], {population: 40}),
-  turf.point([14,2], {population: 80}),
-  turf.point([13,1], {population: 90}),
-  turf.point([19,7], {population: 100})
-]);
+var points = {
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "population": 5
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [5, 5]
+      }
+    }, {
+      "type": "Feature",
+      "properties": {
+        "population": 40
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [1, 3]
+      }
+    }, {
+      "type": "Feature",
+      "properties": {
+        "population": 80
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [14, 2]
+      }
+    }, {
+      "type": "Feature",
+      "properties": {
+        "population": 90
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [13, 1]
+      }
+    }, {
+      "type": "Feature",
+      "properties": {
+        "population": 100
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [19, 7]
+      }
+    }
+  ]
+};
 
 var breaks = turf.quantile(
   points, 'population', [25, 50, 75, 99]);
 
 //=breaks
 ```
+
+
+**Returns** `Array.<number>`, an array of the break values
 
 ## Installation
 
@@ -48,4 +95,5 @@ $ npm install turf-quantile
 ```sh
 $ npm test
 ```
+
 
